@@ -1,16 +1,14 @@
 package com.flexpag.paymentscheduler.dto;
 
+import com.flexpag.paymentscheduler.entity.Scheduling;
 import com.flexpag.paymentscheduler.enumeration.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -25,9 +23,15 @@ public class SchedulingDTO implements Serializable {
     @Enumerated(EnumType.STRING)
     Status status;
 
-
     String date;
 
     int amount;
+
+    public SchedulingDTO(Scheduling newScheduling){
+        this.id = newScheduling.getId();
+        this.status = newScheduling.getStatus();
+        this.date = newScheduling.getDate();
+        this.amount = newScheduling.getAmount();
+    }
 
 }
