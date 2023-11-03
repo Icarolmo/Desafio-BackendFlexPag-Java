@@ -21,13 +21,17 @@ public class Scheduling {
     @Id
     @GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")
     @GeneratedValue(generator = "UUIDGenerator")
+    @Column(name = "id", columnDefinition = "uuid")
     UUID id;
 
+    @Column(name = "status")
     @Enumerated(EnumType.STRING)
     Status status;
 
+    @Column(name = "date")
     String date;
 
+    @Column(name = "amount")
     int amount;
 
     public Scheduling(RequestScheduling data){
